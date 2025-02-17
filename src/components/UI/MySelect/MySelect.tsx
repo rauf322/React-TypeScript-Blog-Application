@@ -1,3 +1,4 @@
+import classes from './MySelect.module.css';
 interface Post {
     posts: { id: number; title: string; description: string }[]; 
     DefaultValue: string;
@@ -28,7 +29,7 @@ const MySelect = ({ posts, DefaultValue, options,setPost}: Post) => {
         }
       };
     return (
-            <select onChange={event => { sortPosts(event.target.value) }}>
+            <select className={classes.mySelect} onChange={event => { sortPosts(event.target.value) }}>
                 <option value="" disabled>{DefaultValue}</option>
                 {options.map((option) => (
                     <option key={option} value={option}>{option}</option>)
