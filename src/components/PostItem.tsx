@@ -2,10 +2,10 @@ import Button from "./UI/Button/Button";
 
 interface PostProps extends React.HTMLAttributes<HTMLDivElement> {
     post: { id: number; title: string; description: string };
-    deletePost: (id: number) => void;
+    remove: (id: number) => void;
   }
 
-export default function PostItem({ post, deletePost }: PostProps) {
+export default function PostItem({ post, remove }: PostProps) {
     return<>
     <div className="post">
         <div className="post_content">
@@ -15,7 +15,7 @@ export default function PostItem({ post, deletePost }: PostProps) {
             </div>
         </div>
         <div>
-            <Button onClick={() => deletePost(post.id)}>Delete</Button>
+            <Button onClick={() => remove(post.id)}>Delete</Button>
         </div>
     </div>
     </>

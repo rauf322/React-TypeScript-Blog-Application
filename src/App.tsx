@@ -1,7 +1,7 @@
-import PostItem from "./components/PostItem";
 import "./styles/App.css";
 import { useState } from "react";
 import Form from "./components/Form";
+import PostList from "./components/PostList";
 
 function App() {
   const [posts, setPost] = useState([
@@ -15,7 +15,7 @@ function App() {
   }
 
 
-  const deletePost = (id: number) => {
+  const remove = (id: number) => {
     setPost(posts.filter((post) => post.id !== id));
   };
 
@@ -23,9 +23,7 @@ function App() {
     <div className="App">
       <h1>Testing React</h1>
       <Form create={addPost} posts={posts}/>
-      {posts.map((post) => (
-        <PostItem deletePost={deletePost} key={post.id} post={post} />
-      ))}
+      <PostList posts={posts} remove={remove}/>
     </div>
   );
 }
