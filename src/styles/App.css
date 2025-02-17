@@ -29,6 +29,11 @@ h1{
     align-items: center;
 }
 
+.noPost{
+    text-align: center;
+    margin-top: 20px;
+}
+
 Form{
     display: flex;
     justify-content: center;
