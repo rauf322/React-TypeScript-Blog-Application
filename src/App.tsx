@@ -1,9 +1,10 @@
 import "./styles/App.css";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { Post } from "./Interfaces";
 import Form from "./components/Form";
 import PostList from "./components/PostList";
 import MySelect from "./components/UI/MySelect/MySelect";
-import { Post } from "./Interfaces";
+import  MyInput  from "./components/UI/Input/MyInput";
 
 function App() {
   const [posts, setPost] = useState([
@@ -15,6 +16,12 @@ function App() {
     setPost([...posts, post]);
   }
 
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const searchPosts = useMemo(() => {
+    return posts.filter(post => post.title.toLowerCase().includes(searchQuery.toLowerCase()))
+  }, [searchQuery, posts]);
+
 
   const remove = (id: number) => {
     setPost(posts.filter((post) => post.id !== id));
@@ -24,15 +31,16 @@ function App() {
     <div className="App">
       <h1>Testing React</h1>
       <Form create={addPost} posts={posts}/>
+      <MyInput value={searchQuery} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)} placeholder={"Search"}/>
       <MySelect 
       posts={posts} 
       DefaultValue={"Sort By"}
-      options={Object.keys(posts[0])}
+      options={posts.length > 0 ? Object.keys(posts[0]) : []}
       setPost={setPost}
       />
-      {posts.length === 0 
+      {searchPosts.length === 0 
       ? <h1 className="noPost">No posts</h1> 
-      : <PostList posts={posts} remove={remove}/>
+      : <PostList posts={searchPosts || []} remove={remove}/>
       }
 
     </div>
