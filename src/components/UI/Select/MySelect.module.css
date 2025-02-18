@@ -1,8 +1,8 @@
-.myInput{
+.mySelect{
     padding: 10px;
     margin: 10px 0px;
     border-radius: 5px;
-    font-size: 15px;
     border: 2px solid teal;
     width: 100%;
+    font-size: 15px;
 }

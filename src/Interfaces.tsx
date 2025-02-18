@@ -22,9 +22,15 @@ export type SinglePost = {
 
 export type SortingList = { 
     posts: Post[];
+
+    setFilter: (filter: {sort: string, query: string}) => void;
+    filter: {sort: string, query: string};
+}
+
+export type MySelect = {
     DefaultValue: string;
     options: string[];
-    setPost: (posts: Post[]) => void;
+    onChange: (e: string) => void;
 }
 
 export type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;

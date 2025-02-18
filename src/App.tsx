@@ -3,8 +3,7 @@ import { useMemo, useState } from "react";
 import { Post } from "./Interfaces";
 import Form from "./components/Form";
 import PostList from "./components/PostList";
-import MySelect from "./components/UI/MySelect/MySelect";
-import  MyInput  from "./components/UI/Input/MyInput";
+import PostFilter from "./components/PostFilter";
 
 function App() {
   const [posts, setPost] = useState([
@@ -16,11 +15,23 @@ function App() {
     setPost([...posts, post]);
   }
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const [filter, setFilter] = useState({sort: "", query: ""});
 
-  const searchPosts = useMemo(() => {
-    return posts.filter(post => post.title.toLowerCase().includes(searchQuery.toLowerCase()))
-  }, [searchQuery, posts]);
+  const filteredAndSortedPosts = useMemo(() => {
+    const filtered = posts.filter(post => post.title.toLowerCase().includes(filter.query.toLowerCase()));
+  
+    switch (filter.sort) {
+      case "title":
+        return filtered.sort((a, b) => a.title.localeCompare(b.title));
+      case "description":
+        return filtered.sort((a, b) => a.description.localeCompare(b.description));
+      case "id":
+        return filtered.sort((a, b) => a.id - b.id);
+      default:
+        return filtered;
+    }
+  }, [filter, posts]);
+  
 
 
   const remove = (id: number) => {
@@ -31,16 +42,14 @@ function App() {
     <div className="App">
       <h1>Testing React</h1>
       <Form create={addPost} posts={posts}/>
-      <MyInput value={searchQuery} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)} placeholder={"Search"}/>
-      <MySelect 
-      posts={posts} 
-      DefaultValue={"Sort By"}
-      options={posts.length > 0 ? Object.keys(posts[0]) : []}
-      setPost={setPost}
+      <PostFilter 
+          posts={posts}
+          setFilter={setFilter}
+          filter={filter}
       />
-      {searchPosts.length === 0 
+      {filteredAndSortedPosts.length === 0 
       ? <h1 className="noPost">No posts</h1> 
-      : <PostList posts={searchPosts || []} remove={remove}/>
+      : <PostList posts={filteredAndSortedPosts} remove={remove}/>
       }
 
     </div>

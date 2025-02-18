@@ -36,10 +36,11 @@ h1{
 
 Form{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: left;
     margin-top: 20px;
 }
 Form Button{
-    width: 20%;
+    width: 10%;
 }
