@@ -18,7 +18,7 @@ const Form = ({create, posts}:CreatePost) => {
 
     const addNewPost = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (formData.title || formData.description) {
+        if (formData.title && formData.description) {
             const newPost = {
                 ...formData, id: posts.length+1 
             }
