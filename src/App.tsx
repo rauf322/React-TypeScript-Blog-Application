@@ -3,6 +3,7 @@ import { useState } from "react";
 import Form from "./components/Form";
 import PostList from "./components/PostList";
 import MySelect from "./components/UI/MySelect/MySelect";
+import { Post } from "./Interfaces";
 
 function App() {
   const [posts, setPost] = useState([
@@ -10,7 +11,7 @@ function App() {
     { id: 2, title: "REACT", description: "Description" },
   ]);
 
-  const addPost = (post: { id:number; title: string; description: string }) => {
+  const addPost = (post: Post) => {
     setPost([...posts, post]);
   }
 

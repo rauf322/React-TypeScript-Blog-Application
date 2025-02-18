@@ -1,8 +1,6 @@
 import classes from './Button.module.css';
+import { ButtonProps } from '../../../Interfaces';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
-}
 
 export default function Button({ children, ...props }: ButtonProps) {
   return (

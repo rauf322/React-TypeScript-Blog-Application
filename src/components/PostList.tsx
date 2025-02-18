@@ -1,9 +1,5 @@
 import PostItem from "./PostItem";
-
-interface PostListProps { 
-    posts: { id: number; title: string; description: string }[]; 
-    remove: (id: number) => void;
-}
+import { PostListProps } from "../Interfaces";
 
 
 export default function PostList ({posts, remove}: PostListProps) {

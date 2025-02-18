@@ -1,11 +1,8 @@
 import Button from "./UI/Button/Button";
+import { SinglePost } from "../Interfaces";
 
-interface PostProps extends React.HTMLAttributes<HTMLDivElement> {
-    post: { id: number; title: string; description: string };
-    remove: (id: number) => void;
-  }
 
-export default function PostItem({ post, remove }: PostProps) {
+export default function PostItem({ post, remove }: SinglePost) {
     return<>
     <div className="post">
         <div className="post_content">

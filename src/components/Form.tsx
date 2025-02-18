@@ -1,13 +1,11 @@
 import Button from "./UI/Button/Button";
 import MyInput from "./UI/Input/MyInput";
 import React, { useState } from "react";
+import { CreatePost } from "../Interfaces";
 
-interface FormProps {
-    create: (post: { id:number; title: string; description: string }) => void;
-    posts: { id:number; title: string; description: string }[];
-}
 
-const Form = ({create, posts}:FormProps) => {
+
+const Form = ({create, posts}:CreatePost) => {
 
     const [formData, setFormData] = useState({title: "", description: "" });
 

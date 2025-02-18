@@ -1,12 +1,7 @@
 import classes from './MySelect.module.css';
-interface Post {
-    posts: { id: number; title: string; description: string }[]; 
-    DefaultValue: string;
-    options: string[];
-    setPost: (posts: { id: number; title: string; description: string }[]) => void;
-}
+import { SortingList } from '../../../Interfaces';
 
-const MySelect = ({ posts, DefaultValue, options,setPost}: Post) => {
+const MySelect = ({ posts, DefaultValue, options,setPost}: SortingList) => {
     const sortPosts = (sort: string) => {
         if (sort === "id") {
           // Sorting by numerical ID
