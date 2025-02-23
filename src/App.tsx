@@ -4,6 +4,7 @@ import { Post } from "./Interfaces";
 import Form from "./components/Form";
 import PostList from "./components/PostList";
 import PostFilter from "./components/PostFilter";
+import MyModal from "./components/UI/myModal/myModal";
 
 function App() {
   const [posts, setPost] = useState([
@@ -40,6 +41,9 @@ function App() {
 
   return (
     <div className="App">
+      <MyModal>
+        
+      </MyModal>
       <h1>Testing React</h1>
       <Form create={addPost} posts={posts}/>
       <PostFilter 

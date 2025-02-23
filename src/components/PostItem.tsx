@@ -1,4 +1,4 @@
-import Button from "./UI/Button/Button";
+import Button from "./UI/button/Button";
 import { SinglePost } from "../Interfaces";
 
 

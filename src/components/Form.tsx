@@ -1,5 +1,5 @@
-import Button from "./UI/Button/Button";
-import MyInput from "./UI/Input/MyInput";
+import Button from "./UI/button/Button";
+import MyInput from "./UI/input/MyInput";
 import React, { useState } from "react";
 import { CreatePost } from "../Interfaces";
 

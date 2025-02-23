@@ -1,6 +1,6 @@
 import { SortingList } from '../Interfaces';
-import MySelect from './UI/Select/MySelect';
-import MyInput from './UI/Input/MyInput';
+import MySelect from './UI/select/MySelect';
+import MyInput from './UI/input/MyInput';
 
 const PostFilter = ({ posts, setFilter, filter}: SortingList) => {
 
