@@ -33,4 +33,10 @@ export type MySelect = {
     onChange: (e: string) => void;
 }
 
+export type MyModalWindow = {
+    children: React.ReactNode;
+    visible: boolean;
+    setVisible: (visible: boolean) => void;
+}
+
 export type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;

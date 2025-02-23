@@ -4,7 +4,8 @@ import { Post } from "./Interfaces";
 import Form from "./components/Form";
 import PostList from "./components/PostList";
 import PostFilter from "./components/PostFilter";
-import MyModal from "./components/UI/myModal/myModal";
+import MyModal from "./components/UI/myModal/MyModal";
+import MyButton from "./components/UI/button/Button";
 
 function App() {
   const [posts, setPost] = useState([
@@ -12,11 +13,15 @@ function App() {
     { id: 2, title: "REACT", description: "Description" },
   ]);
 
-  const addPost = (post: Post) => {
-    setPost([...posts, post]);
-  }
+
 
   const [filter, setFilter] = useState({sort: "", query: ""});
+  const [visible, setVisible] = useState(true);
+
+  const addPost = (post: Post) => {
+    setPost([...posts, post]);
+    setVisible(false);
+  }
 
   const filteredAndSortedPosts = useMemo(() => {
     const filtered = posts.filter(post => post.title.toLowerCase().includes(filter.query.toLowerCase()));
@@ -36,16 +41,19 @@ function App() {
 
 
   const remove = (id: number) => {
-    setPost(posts.filter((post) => post.id !== id));
-  };
+    const updatedPosts = posts
+        .filter((post) => post.id !== id) 
+        .map((post, index) => ({ ...post, id: index + 1 })); 
+    setPost(updatedPosts);
+};
 
   return (
     <div className="App">
-      <MyModal>
-        
+      <MyButton onClick={() => setVisible(true)}>Add Post</MyButton>
+      <MyModal visible={visible} setVisible={setVisible}>
+        <Form create={addPost} posts={posts}/>
       </MyModal>
       <h1>Testing React</h1>
-      <Form create={addPost} posts={posts}/>
       <PostFilter 
           posts={posts}
           setFilter={setFilter}
@@ -55,7 +63,6 @@ function App() {
       ? <h1 className="noPost">No posts</h1> 
       : <PostList posts={filteredAndSortedPosts} remove={remove}/>
       }
-
     </div>
   );
 }

@@ -1,10 +1,17 @@
 import cl from './MyModal.module.css'; 
+import { MyModalWindow } from '../../../Interfaces';
 
 
-const MyModal = ({ children }: { children: React.ReactNode | null }) => {
+const MyModal = ({ children, visible, setVisible}: MyModalWindow) => {
+
+    const rootClasses = [cl.myModal];
+    if (visible) {
+        rootClasses.push(cl.active);
+    }
+    
     return (
-        <div className={[cl.myModal, cl.active].join(' ')}>
-            <div className={cl.myModalContent}>
+        <div className={rootClasses.join(' ')} onClick={() => setVisible(false)}>
+            <div className={cl.myModalContent} onClick={(e) => e.stopPropagation()}>
                 {children}
             </div>
         </div>
