@@ -39,4 +39,9 @@ export type MyModalWindow = {
     setVisible: (visible: boolean) => void;
 }
 
+export type SortPosts = {
+    posts: Post[], 
+    filter: { sort: string; query: string }
+}
+
 export type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
