@@ -7,7 +7,7 @@ import { CreatePost } from "../Interfaces";
 
 const Form = ({create, posts}:CreatePost) => {
 
-    const [formData, setFormData] = useState({title: "", description: "" });
+    const [formData, setFormData] = useState({title: "", body: "" });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({
@@ -18,12 +18,12 @@ const Form = ({create, posts}:CreatePost) => {
 
     const addNewPost = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (formData.title && formData.description) {
+        if (formData.title && formData.body) {
             const newPost = {
                 ...formData, id: posts.length+1 
             }
             create(newPost); 
-            setFormData({ title: "", description: "" }); // Reset form
+            setFormData({ title: "", body: "" }); // Reset form
             } else {
             alert("Please fill all the fields");
             }
@@ -32,7 +32,7 @@ const Form = ({create, posts}:CreatePost) => {
     return (
         <form action="" onSubmit={addNewPost}>
             <MyInput name="title" placeholder="Title" value={formData.title} onChange={handleChange}/>
-            <MyInput name="description" placeholder="Description" value={formData.description} onChange={handleChange}/>
+            <MyInput name="body" placeholder="Description" value={formData.body} onChange={handleChange}/>
             <Button type="submit">Add Post</Button>
         </form>
     );

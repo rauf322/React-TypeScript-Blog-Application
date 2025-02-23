@@ -3,12 +3,14 @@ import MySelect from './UI/select/MySelect';
 import MyInput from './UI/input/MyInput';
 
 const PostFilter = ({ posts, setFilter, filter}: SortingList) => {
-
+    const post_desc = posts.length > 0 ? Object.keys(posts[0]) : [];
+    const new_post = post_desc.slice(1, 4);
+    console.log(new_post);
     return (
     <div>      
       <MySelect
         DefaultValue='Group_by' 
-        options={posts.length > 0 ? Object.keys(posts[0]) : []}
+        options={new_post}
         onChange={(e: string) => setFilter({...filter, sort: e})}
       />
       <MyInput 

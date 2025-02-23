@@ -7,7 +7,7 @@ export default function PostItem({ post, remove }: SinglePost) {
             <div className="post_content">
                 <strong>{post.id}. {post.title}</strong>
                 <div>
-                    {post.description}
+                    {post.body}
                 </div>
             </div>
             <div>

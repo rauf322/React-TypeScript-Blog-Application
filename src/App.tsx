@@ -1,5 +1,5 @@
 import "./styles/App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Post } from "./Interfaces";
 import Form from "./components/Form";
 import PostList from "./components/PostList";
@@ -7,12 +7,15 @@ import PostFilter from "./components/PostFilter";
 import MyModal from "./components/UI/myModal/MyModal";
 import MyButton from "./components/UI/button/Button";
 import { usePosts } from "./hooks/usePosts";
+import { PostService } from "./API/PostService";
 
 function App() {
-  const [posts, setPost] = useState([
-    { id: 1, title: "JAVASCRIPT", description: "Description" },
-    { id: 2, title: "REACT", description: "Description" },
-  ]);
+
+  useEffect(() => {
+    PostService(setPost);
+  }, []);
+
+  const [posts, setPost] = useState<Post[]>([]);
 
 
 

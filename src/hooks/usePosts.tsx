@@ -9,8 +9,8 @@ export const usePosts = (posts: Post[], filter: { query: string; sort: string })
     switch (filter.sort) {
       case "title":
         return filtered.sort((a, b) => a.title.localeCompare(b.title));
-      case "description":
-        return filtered.sort((a, b) => a.description.localeCompare(b.description));
+      case "body":
+        return filtered.sort((a, b) => a.body.localeCompare(b.body));
       case "id":
         return filtered.sort((a, b) => a.id - b.id);
       default:

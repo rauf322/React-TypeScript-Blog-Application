@@ -2,7 +2,7 @@
 export type Post = {
     id: number;
     title: string;
-    description: string;
+    body: string;
 }
 
 export type CreatePost = {
