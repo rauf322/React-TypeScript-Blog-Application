@@ -8,34 +8,41 @@ import MyModal from "./components/UI/myModal/MyModal";
 import MyButton from "./components/UI/button/Button";
 import { usePosts } from "./hooks/usePosts";
 import { PostService } from "./API/PostService";
+import Loader from "./components/UI/loader/Loader";
+import { useFetching } from "./hooks/useFetching";
 
 function App() {
-
-  useEffect(() => {
-    PostService(setPost);
-  }, []);
-
   const [posts, setPost] = useState<Post[]>([]);
 
-
+  const [fetchPosts, isLoading, postError] = useFetching( async() => {
+    const posts = await PostService();
+    setPost(posts);
+  })
 
   const [filter, setFilter] = useState({sort: "", query: ""});
   const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+
 
   const addPost = (post: Post) => {
     setPost([...posts, post]);
     setVisible(false);
   }
 
-  const filteredAndSortedPosts = usePosts(posts, filter);
-
-
   const remove = (id: number) => {
     const updatedPosts = posts
         .filter((post) => post.id !== id) 
         .map((post, index) => ({ ...post, id: index + 1 })); 
     setPost(updatedPosts);
-};
+  };
+
+
+  const filteredAndSortedPosts = usePosts(posts, filter);
+
 
   return (
     <div className="App">
@@ -49,8 +56,12 @@ function App() {
           setFilter={setFilter}
           filter={filter}
       />
-      {filteredAndSortedPosts.length === 0 
-      ? <h1 className="noPost">No posts</h1> 
+      {postError && 
+        <h1>Error: ${postError}</h1>
+      }
+
+      {isLoading 
+      ? <div style={{display:"flex", justifyContent:"center", marginTop:"30px"}}><Loader/></div>
       : <PostList posts={filteredAndSortedPosts} remove={remove}/>
       }
     </div>

@@ -29,33 +29,6 @@ h1 {
   align-items: center;
 }
 
-/* Add these transition classes */
-.post-enter {
-  opacity: 0;
-  transform: translateX(-100%);
-}
-
-.post-enter-active {
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 500ms ease-in, transform 500ms ease-in;
-}
-
-.post-exit {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.post-exit-active {
-  opacity: 0;
-  transform: translateX(100%);
-  transition: opacity 500ms ease-in, transform 500ms ease-in;
-}
-
-.noPost {
-  text-align: center;
-  margin-top: 20px;
-}
 
 Form {
   display: flex;
