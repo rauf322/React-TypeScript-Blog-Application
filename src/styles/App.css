@@ -11,7 +11,9 @@ h1 {
 
 #root {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
 }
 
 .App {
@@ -57,4 +59,27 @@ Form {
   padding: 10px;
   border:solid 5px rgb(207, 0, 0);
   border-radius: 20px;
+}
+
+.navbar{
+  height: 50px;
+  width: 100vm;
+  display: flex;
+  align-items: center;
+  padding: 0,15px;
+  background: lightgrey;
+}
+
+.navbar__links{
+  margin-left: auto;
+}
+
+.post_btns{
+  display: flex;
+  justify-content: right;
+  width: 100%;
+}
+
+.post_btns button{
+  margin-left: 10px;
 }
