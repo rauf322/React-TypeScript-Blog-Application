@@ -1,7 +1,11 @@
 import axios from "axios";
-import { Post } from "../Interfaces";
 
-export const PostService = async (): Promise<Post[]> => {
-  const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-  return response.data
+export const PostService = async (limit:number, page:number) => {
+  const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
+    params: {
+      _limit: limit,
+      _page: page
+    }
+  });
+  return response
 };

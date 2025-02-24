@@ -45,3 +45,10 @@ export type SortPosts = {
 }
 
 export type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
+
+
+export type PaginationProps = {
+    page: number;
+    pages_button: number[];
+    setPage: (page: number) => void;
+}
