@@ -1,15 +1,13 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
-import Posts from './pages/Posts';
-import WelcomePage from './pages/WelcomePage';
-import Error from "./pages/Error";
+import { Route, Routes } from 'react-router-dom';
+import { routes } from './router/routes';
 
 const AppRouter = () => {
     return (
         <Routes>
-            <Route path="/welcomepage" element={<WelcomePage />} />
-            <Route path="/posts" element={<Posts />} />
-            <Route path="/error" element={<Error/>} />
-            <Route path="*" element={<Navigate to='/error'/>} />
+            {routes.map(route => (
+                <Route key={route.path} path={route.path} element={route.element} />
+            ))}
+
         </Routes>
     );
 };

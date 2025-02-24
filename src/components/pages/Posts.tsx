@@ -20,7 +20,7 @@ function Posts() {
   const [totalCount, setTotalCount] = useState(0); 
 
   const [fetchPosts, isLoading, postError] = useFetching( async() => {
-    const response = await PostService(limit,page);
+    const response = await PostService.getAll(limit,page);
     setTotalCount(response.headers['x-total-count']);
     setPost(response.data);
   })

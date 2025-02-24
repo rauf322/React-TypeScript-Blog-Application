@@ -52,3 +52,11 @@ export type PaginationProps = {
     pages_button: number[];
     setPage: (page: number) => void;
 }
+
+export type Comment = {
+    id: number;
+    name: string;
+    email: string;
+    body: string;
+    postId: number;
+}
