@@ -5,7 +5,8 @@ import { AuthContext } from '../../context';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const {isAuth, setIsAuth} = useContext(AuthContext);
+    const authContext = useContext(AuthContext);
+    const setIsAuth = authContext ? authContext.setIsAuth : () => {};
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate()
@@ -13,6 +14,7 @@ const Login = () => {
         if(login && password){
         event.preventDefault();
         setIsAuth(true);
+        localStorage.setItem('auth', 'true');
         navigate(`/posts`)
         } else {
             alert("Please fill all the fields");
@@ -20,7 +22,7 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div style={{margin: 30}}>
             <h1>Page to Login In</h1>
             <form action="" onSubmit={submit_user}>
                 <MyInput type="text" value={login} onChange={(element: React.ChangeEvent<HTMLInputElement>)=> setLogin(element.target.value)} placeholder='Enter Login'/>

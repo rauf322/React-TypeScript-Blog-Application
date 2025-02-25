@@ -26,8 +26,8 @@ const PostPage = () => {
     }, []);
 
     return (
-        <div>
-            <h1>You opened post page {params.id}</h1>
+        <div style={{ marginTop: 30 , marginLeft: 30}}>
+            <h1 >You opened post page {params.id}</h1>
             {error && <h1>Error: {error}</h1>}
             {isLoading ? (
                 <Loader />
@@ -41,7 +41,7 @@ const PostPage = () => {
             ) : (
                 <div>
                     {comments.map(comment => (
-                        <div key={comment.id} style={{ marginTop: 30 }}>
+                        <div key={comment.id}>
                             <h5>{comment.id}</h5>
                             <h5>{comment.name}</h5>
                             <h5>{comment.email}</h5>
