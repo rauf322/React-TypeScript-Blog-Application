@@ -1,5 +1,6 @@
 import { PostService } from "../../API/PostService";
 import { useFetching } from "../../hooks/useFetching";
+import useObserver from "../../hooks/useObserver";
 import { usePosts } from "../../hooks/usePosts";
 import { Post } from "../../Interfaces";
 import Form from "../Form";
@@ -10,7 +11,8 @@ import Loader from "../UI/loader/Loader";
 import MyModal from "../UI/myModal/MyModal";
 import Pagination from "../UI/Pagination/Pagination";
 import { getPagesCount } from "../utils/pages";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
 
 function Posts() {
   const [posts, setPost] = useState<Post[]>([]);
@@ -22,18 +24,21 @@ function Posts() {
   const [fetchPosts, isLoading, postError] = useFetching( async() => {
     const response = await PostService.getAll(limit,page);
     setTotalCount(response.headers['x-total-count']);
-    setPost(response.data);
+    setPost([...posts , ...response.data]);
   })
 
 
   const pages_button = getPagesCount(limit, totalCount);
+  const lastElement = useRef<HTMLDivElement>(null)
+  console.log(lastElement)
 
-
-
+  useObserver(lastElement, page < limit, isLoading, () => {
+    setPage(page + 1);
+  })
+  
 
   useEffect(() => {
     fetchPosts();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
 
@@ -69,10 +74,11 @@ function Posts() {
       {postError && 
         <h1>Error: ${postError}</h1>
       }
-      {isLoading 
-      ? <div style={{display:"flex", justifyContent:"center", marginTop:"30px"}}><Loader/></div>
-      : <PostList posts={filteredAndSortedPosts} remove={remove}/>
+      {isLoading &&
+        <div style={{display:"flex", justifyContent:"center", marginTop:"30px"}}><Loader/></div>
       }
+      <PostList posts={filteredAndSortedPosts} remove={remove}/>
+      <div ref={lastElement} style={{height:"20px", background:"red"}}/>
       <Pagination 
       page = {page} 
       pages_button = {pages_button} 

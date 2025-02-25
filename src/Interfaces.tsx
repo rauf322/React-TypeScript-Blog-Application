@@ -60,3 +60,10 @@ export type Comment = {
     body: string;
     postId: number;
 }
+
+export type ObserverType = {
+    ref: React.RefObject<HTMLDivElement>;
+    canLoad: boolean;
+    isLoading: boolean;
+    callback: () => void;
+}
