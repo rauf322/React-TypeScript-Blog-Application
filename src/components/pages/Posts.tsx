@@ -5,7 +5,7 @@ import { Post } from "../../Interfaces";
 import Form from "../Form";
 import PostFilter from "../PostFilter";
 import PostList from "../PostList";
-import Button from "../UI/button/Button";
+import MyButton from "../UI/button/MyButton";
 import Loader from "../UI/loader/Loader";
 import MyModal from "../UI/myModal/MyModal";
 import Pagination from "../UI/Pagination/Pagination";
@@ -56,7 +56,7 @@ function Posts() {
 
   return (
     <div className="App">
-      <Button onClick={() => setVisible(true)}>Add Post</Button>
+      <MyButton onClick={() => setVisible(true)}>Add Post</MyButton>
       <MyModal visible={visible} setVisible={setVisible}>
         <Form create={addPost} posts={posts}/>
       </MyModal>

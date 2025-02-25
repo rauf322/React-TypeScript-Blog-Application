@@ -6,18 +6,18 @@ import Loader from "../UI/loader/Loader";
 import { Comment, Post } from "../../Interfaces";
 
 const PostPage = () => {
-    const params = useParams<{ id: string }>(); // Type params explicitly
-    const [post, setPost] = useState<Post>({} as Post); // Type post with default empty object
-    const [comments, setComments] = useState<Comment[]>([]); // Type comments as array
+    const params = useParams<{ id: string }>(); 
+    const [post, setPost] = useState<Post>({} as Post); 
+    const [comments, setComments] = useState<Comment[]>([]); 
     const [fetchPostById, isLoading, error] = useFetching(async () => {
         if (!params.id) return;
         const response = await PostService.getById(params.id);
-        setPost(response.data); // Type inference handles response.data as Post
+        setPost(response.data); 
     });
     const [fetchCommentsById, isCommentsLoading, commentsError] = useFetching(async () => {
         if (!params.id) return;
         const response = await PostService.getByComments(params.id);
-        setComments(response.data); // Type inference handles response.data as Comment[]
+        setComments(response.data); 
     });
 
     useEffect(() => {
@@ -37,7 +37,7 @@ const PostPage = () => {
             <h1 style={{ marginTop: 30 }}>Comments</h1>
             {commentsError && <h1>Error: {commentsError}</h1>}
             {isCommentsLoading ? (
-                <Loader />
+            <Loader />
             ) : (
                 <div>
                     {comments.map(comment => (

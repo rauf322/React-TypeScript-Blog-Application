@@ -1,4 +1,4 @@
-import Button from "./UI/button/Button";
+import MyButton from "./UI/button/MyButton";
 import MyInput from "./UI/input/MyInput";
 import React, { useState } from "react";
 import { CreatePost } from "../Interfaces";
@@ -24,7 +24,7 @@ const Form = ({create, posts}:CreatePost) => {
             }
             create(newPost); 
             setFormData({ title: "", body: "" }); // Reset form
-            } else {
+        } else {
             alert("Please fill all the fields");
             }
     };
@@ -33,7 +33,7 @@ const Form = ({create, posts}:CreatePost) => {
         <form action="" onSubmit={addNewPost}>
             <MyInput name="title" placeholder="Title" value={formData.title} onChange={handleChange}/>
             <MyInput name="body" placeholder="Description" value={formData.body} onChange={handleChange}/>
-            <Button type="submit">Add Post</Button>
+            <MyButton type="submit">Add Post</MyButton>
         </form>
     );
 };
