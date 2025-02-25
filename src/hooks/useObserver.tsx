@@ -15,7 +15,7 @@ const useObserver = (ref:React.RefObject<HTMLDivElement>,canLoad:boolean,isLoadi
         if (ref.current) {
             observer.current.observe(ref.current);
         }
-      }, [callback, canLoad, isLoading, ref])
+      }, [isLoading])
 };
 
 export default useObserver;

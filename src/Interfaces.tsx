@@ -30,7 +30,7 @@ export type SortingList = {
 export type MySelect = {
     DefaultValue: string;
     options: string[];
-    onChange: (e: string) => void;
+    onChange: (e: string) => void; 
 }
 
 export type MyModalWindow = {

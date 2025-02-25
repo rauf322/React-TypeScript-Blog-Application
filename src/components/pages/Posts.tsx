@@ -10,6 +10,7 @@ import MyButton from "../UI/button/MyButton";
 import Loader from "../UI/loader/Loader";
 import MyModal from "../UI/myModal/MyModal";
 import Pagination from "../UI/Pagination/Pagination";
+import MySelect from "../UI/select/MySelect";
 import { getPagesCount } from "../utils/pages";
 import { useEffect, useRef, useState } from "react";
 
@@ -17,7 +18,7 @@ import { useEffect, useRef, useState } from "react";
 function Posts() {
   const [posts, setPost] = useState<Post[]>([]);
   const [visible, setVisible] = useState(true);
-  const limit = 10;
+  const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0); 
 
@@ -30,7 +31,6 @@ function Posts() {
 
   const pages_button = getPagesCount(limit, totalCount);
   const lastElement = useRef<HTMLDivElement>(null)
-  console.log(lastElement)
 
   useObserver(lastElement, page < limit, isLoading, () => {
     setPage(page + 1);
@@ -39,7 +39,7 @@ function Posts() {
 
   useEffect(() => {
     fetchPosts();
-  }, [page]);
+  }, [page,limit]);
 
 
   const addPost = (post: Post) => {
@@ -58,7 +58,7 @@ function Posts() {
   };
   const filteredAndSortedPosts = usePosts(posts, filter);
 
-
+  console.log(page)
   return (
     <div className="App">
       <MyButton onClick={() => setVisible(true)}>Add Post</MyButton>
@@ -71,6 +71,12 @@ function Posts() {
           setFilter={setFilter}
           filter={filter}
       />
+     <MySelect
+        DefaultValue='Amount of Pages' 
+        options={["2","10","15"]}
+        onChange={(e: string) => setLimit(Number(e))}
+      />
+
       {postError && 
         <h1>Error: ${postError}</h1>
       }
@@ -78,7 +84,7 @@ function Posts() {
         <div style={{display:"flex", justifyContent:"center", marginTop:"30px"}}><Loader/></div>
       }
       <PostList posts={filteredAndSortedPosts} remove={remove}/>
-      <div ref={lastElement} style={{height:"20px", background:"red"}}/>
+      <div ref={lastElement}/>
       <Pagination 
       page = {page} 
       pages_button = {pages_button} 
