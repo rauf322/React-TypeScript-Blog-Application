@@ -1,4 +1,3 @@
-```markdown
 # 📖 React TypeScript Blog Application
 
 A modern blog application built with **React, TypeScript, and Vite**, demonstrating clean architecture and best practices for building scalable web applications.
