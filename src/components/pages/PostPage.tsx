@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PostService } from "../../API/PostService";
 import { useFetching } from "../../hooks/useFetching";
-import Loader from "../UI/Loader/Loader";
+import Loader from "../UI/loader/Loader";
 import { Comment, Post } from "../../Interfaces";
 
 const PostPage = () => {
