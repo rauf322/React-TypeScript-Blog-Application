@@ -126,7 +126,4 @@ Special thanks to the following resources:
 - [TypeScript Documentation](https://www.typescriptlang.org/)  
 - [Vite Documentation](https://vitejs.dev/)  
 
-
-
 Enjoy coding! 🚀🎉
-```
