@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const PostService = {
-    // Fetch posts with pagination (not used in PostPage, but kept for completeness)
     getAll: async (limit: number, page: number) => {
         const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
             params: {

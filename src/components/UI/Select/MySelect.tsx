@@ -3,10 +3,10 @@ import classes from './MySelect.module.css';
 
 const MySelect = ({DefaultValue, options, onChange}:MySelect) => {
     return (
-        <select className={classes.mySelect} onChange={(e) => onChange(e.target.value)}>
+        <select className={classes.mySelect} onChange={(e) => onChange?.(e.target.value)}>
             <option value="" disabled>{DefaultValue}</option>
-            {options.map((option) => (
-                <option key={option} value={option}>{option}</option>
+            {options?.map((option) => (
+                <option key={option.value} value={option.value}>{option.name}</option>
             ))}
         </select>
     );

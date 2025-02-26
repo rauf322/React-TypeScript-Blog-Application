@@ -13,7 +13,6 @@ export default function PostItem({ post, remove }: SinglePost) {
   const handleDelete = () => {
     setIsVisible(false)
   }
-
   return (
     <CSSTransition in={isVisible} timeout={300} classNames="post" unmountOnExit onExited={() => remove(post.id)}>
       <div className="post">

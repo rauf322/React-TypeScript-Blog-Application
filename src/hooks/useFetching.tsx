@@ -1,23 +1,19 @@
-import { useState } from "react";
+import {useState} from "react";
 
-export function useFetching(callback: () => Promise<void>): [() => Promise<void>, boolean, string] {
-    const [isLoading, setLoading] = useState(false);
-    const [error, setError] = useState('');
-    
-    async function fetchPosts() {
+export const useFetching = (callback: (...args: number[]) => Promise<void>) => {
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string>('');
+
+    const fetching = async (...args:number[]) => {
         try {
-            setLoading(true);
-            await callback();
-        } catch (e) {
-            if (e instanceof Error) {
-                setError(e.message);
-            } else {
-                setError(String(e));
-            }
+            setIsLoading(true)
+            await callback(...args)
+        } catch (e: unknown) {
+            setError(e instanceof Error ? e.message : String(e));
         } finally {
-            setLoading(false);
+            setIsLoading(false)
         }
     }
-    
-    return [fetchPosts, isLoading, error];
+
+    return [fetching, isLoading, error] as const;
 }

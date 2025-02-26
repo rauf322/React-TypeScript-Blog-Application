@@ -7,8 +7,11 @@ const PostFilter = ({ posts, setFilter, filter}: SortingList) => {
     return (
     <div>
       <MySelect
-        DefaultValue='Group_by' 
-        options={dropdown_menu}
+        DefaultValue='Group_by'
+        options={dropdown_menu.map(option => ({
+          value: option,
+          name: option
+        }))}
         onChange={(e: string) => setFilter({...filter, sort: e})}
       />
       <MyInput 
