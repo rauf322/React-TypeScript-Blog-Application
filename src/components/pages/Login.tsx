@@ -1,5 +1,5 @@
-import MyInput from '../UI/input/MyInput';
-import MyButton from '../UI/button/MyButton';
+import MyInput from '../UI/Input/MyInput';
+import MyButton from '../UI/Button/MyButton';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context';
 import { useNavigate } from 'react-router-dom';

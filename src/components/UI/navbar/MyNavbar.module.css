@@ -17,6 +17,9 @@
   letter-spacing: 0.25px;
   transition: background-color 0.2s, box-shadow 0.2s;
   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  margin: 0 15px;
+  text-decoration: none;
+  color: teal;
 }
 
 .btn:hover {
