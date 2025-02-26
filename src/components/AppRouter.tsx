@@ -3,6 +3,7 @@ import { publicRoutes, privateRoutes } from './router/routes';
 import { AuthContext } from '../context';
 import { useContext } from 'react';
 import Loader from './UI/loader/Loader';
+import { RouteType } from '../types/route';
 
 
 const AppRouter = () => {

@@ -1,5 +1,7 @@
+import { ReactElement } from 'react';
+
 export interface RouteType {
     path: string;
-    element: React.ReactElement;
+    element: ReactElement;
     // add other properties your routes have
 } 
