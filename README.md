@@ -1,5 +1,3 @@
-Here’s a properly styled version of your README file with a corrected tree structure for better readability. I've also added markdown enhancements for better visual appeal.  
-
 ```markdown
 # 📖 React TypeScript Blog Application
 
@@ -128,7 +126,7 @@ Special thanks to the following resources:
 - [TypeScript Documentation](https://www.typescriptlang.org/)  
 - [Vite Documentation](https://vitejs.dev/)  
 
----
+
 
 Enjoy coding! 🚀🎉
 ```
