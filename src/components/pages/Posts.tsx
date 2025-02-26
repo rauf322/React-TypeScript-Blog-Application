@@ -5,11 +5,11 @@ import { Post } from "../../Interfaces";
 import Form from "../Form";
 import PostFilter from "../PostFilter";
 import PostList from "../PostList";
-import MyButton from "../UI/button/MyButton";
-import Loader from "../UI/loader/Loader";
+import MyButton from "../UI/Button/MyButton";
+import Loader from "../UI/Loader/Loader";
 import MyModal from "../UI/myModal/MyModal";
 import Pagination from "../UI/Pagination/Pagination";
-import MySelect from "../UI/select/MySelect";
+import MySelect from "../UI/Select/MySelect";
 import { getPagesCount } from "../utils/pages";
 import { useEffect, useState } from "react";
 

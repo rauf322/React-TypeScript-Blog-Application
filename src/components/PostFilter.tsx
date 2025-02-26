@@ -1,6 +1,6 @@
 import { SortingList } from '../Interfaces';
-import MySelect from './UI/select/MySelect';
-import MyInput from './UI/input/MyInput';
+import MySelect from './UI/Select/MySelect';
+import MyInput from './UI/Input/MyInput';
 
 const PostFilter = ({ posts, setFilter, filter}: SortingList) => {
     const dropdown_menu = (posts.length > 0 ? Object.keys(posts[0]) : []).slice(1,4)

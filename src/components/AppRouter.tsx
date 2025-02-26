@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-import { publicRoutes, privateRoutes } from './router/routes';
+import { publicRoutes, privateRoutes } from './router/Routes';
 import { AuthContext } from '../context';
 import { useContext } from 'react';
-import Loader from './UI/loader/Loader';
+import Loader from './UI/Loader/Loader';
 
 
 const AppRouter = () => {
