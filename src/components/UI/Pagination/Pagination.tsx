@@ -1,5 +1,5 @@
 import { PaginationProps } from '../../../Interfaces';
-import { Span } from '../span/MySpan';
+import { Span } from '../Span/MySpan';
 
 
 const Pagination = ({page,pages_button,setPage}:PaginationProps) => {

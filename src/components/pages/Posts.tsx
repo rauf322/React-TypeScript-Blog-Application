@@ -7,10 +7,10 @@ import PostFilter from "../PostFilter";
 import PostList from "../PostList";
 import MyButton from "../UI/Button/MyButton";
 import Loader from "../UI/Loader/Loader";
-import MyModal from "../UI/myModal/MyModal";
+import MyModal from "../UI/MyModal/MyModal";
 import Pagination from "../UI/Pagination/Pagination";
 import MySelect from "../UI/Select/MySelect";
-import { getPagesCount } from "../utils/pages";
+import { getPagesCount } from "../utils/Pages";
 import { useEffect, useState } from "react";
 
 
